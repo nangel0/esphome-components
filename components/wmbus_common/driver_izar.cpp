@@ -75,12 +75,13 @@ namespace
         di.addDetection(MANUFACTURER_DME,  0x06,  0x78);
         di.addDetection(MANUFACTURER_HYD,  0x07,  0x86);
         di.addDetection(MANUFACTURER_HYD,  0x07,  0x86);
-        +// Diehl/IZAR compact-frame variant (newer module firmware, version 0xa2).
-        +// Frames look like: 1944a511780713244126a23115001391ab74c53e34d5c0499f31
-        +// (manufacturer DME or SAP, version 0xa2, type 0x31, payload starts 00 13 ...).
-        +// Existing PRIOS decode path (decodePrios + Diehl default key) handles them.
-        +di.addDetection(MANUFACTURER_DME,  0xa2,  0x31);
-        +di.addDetection(MANUFACTURER_SAP,  0xa2,  0x31);
+        // Diehl/IZAR compact-frame variant (newer module firmware, version 0xa2).
+        // Frames look like: 1944a511780713244126a23115001391ab74c53e34d5c0499f31
+        // (manufacturer DME or SAP, version 0xa2, type 0x31, payload starts 00 13 ...).
+        // Existing PRIOS decode path (decodePrios + Diehl default key) handles them.
+        di.addDetection(MANUFACTURER_DME,  0xa2,  0x31);
+        di.addDetection(MANUFACTURER_SAP,  0xa2,  0x31);
+        di.addDetection(MANUFACTURER_SAP, 0x50, 0x04); // Assinatura exata do seu contador
         di.usesProcessContent();
 
         di.setConstructor([](MeterInfo& mi, DriverInfo& di){ return std::shared_ptr<Meter>(new Driver(mi, di)); });
