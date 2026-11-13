@@ -81,7 +81,7 @@ namespace
         // Existing PRIOS decode path (decodePrios + Diehl default key) handles them.
         di.addDetection(MANUFACTURER_DME,  0xa2,  0x31);
         di.addDetection(MANUFACTURER_SAP,  0xa2,  0x31);
-        di.addDetection(MANUFACTURER_SAP, 0x50, 0x04); // Assinatura exata do seu contador
+        di.addDetection(MANUFACTURER_SAP,  0x50, 0x04); // Assinatura exata do seu contador
         di.usesProcessContent();
 
         di.setConstructor([](MeterInfo& mi, DriverInfo& di){ return std::shared_ptr<Meter>(new Driver(mi, di)); });
