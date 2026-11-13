@@ -82,6 +82,7 @@ namespace
         di.addDetection(MANUFACTURER_DME,  0xa2,  0x31);
         di.addDetection(MANUFACTURER_SAP,  0xa2,  0x31);
         di.addDetection(MANUFACTURER_SAP,  0x50,  0x04); // Assinatura exata do seu contador
+        di.addDetection(MANUFACTURER_SAP,  0xcc,  0x01); // Add this line to support the 0xcc 0x01 variant
         di.usesProcessContent();
 
         di.setConstructor([](MeterInfo& mi, DriverInfo& di){ return std::shared_ptr<Meter>(new Driver(mi, di)); });
